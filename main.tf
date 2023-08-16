@@ -1,15 +1,7 @@
-variable "word1" {
-  type = string
-}
-
-variable "word2" {
-  type = string
+variable "list_of_words" {
+  type = list(string)
 }
 
 locals {
-  hello = "${var.word1}, ${var.word2}!"
-}
-
-output "message" {
-  value = local.hello
+  upper_cased = [for s in var.list_of_words : upper(s)]
 }
